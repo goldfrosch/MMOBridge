@@ -1,8 +1,10 @@
-main: com.goldfrosch.MainPlugin
-name: BoilerPlatePlugin
+main: com.goldfrosch.MMOCoreBridge
+name: MMOCoreBridge
 version: 0.0.1-SNAPSHOT
-api-version: 1.18.1
 author: GoldFrosch
+depend:
+  - MMOItems
+  - MMOCore
 commands:
   cmd:
     description: HO!
