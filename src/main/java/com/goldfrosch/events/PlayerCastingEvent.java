@@ -1,7 +1,8 @@
 package com.goldfrosch.events;
 
-import com.goldfrosch.MMOCoreBridge;
+import com.goldfrosch.MMOBridge;
 import lombok.RequiredArgsConstructor;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -10,15 +11,24 @@ import org.bukkit.inventory.ItemStack;
 
 @RequiredArgsConstructor
 public class PlayerCastingEvent implements Listener {
-    private final MMOCoreBridge plugin;
+    private final MMOBridge plugin;
 
     @EventHandler
     public void onPlayerChangeHotSlotIfCasting(PlayerItemHeldEvent e) {
         Player player = e.getPlayer();
         ItemStack[] invList = player.getInventory().getContents();
 
-        plugin.consoleLog(
-            String.valueOf(invList[e.getNewSlot()].getItemMeta().getAttributeModifiers())
-        );
+        if(invList[e.getNewSlot()] != null) {
+            String getItemData = String.valueOf(
+                invList[e.getNewSlot()].
+                getItemMeta().getAttributeModifiers(Attribute.GENERIC_ATTACK_SPEED)
+            );
+
+            if(!getItemData.isEmpty()) {
+                if(getItemData.contains("name=mmoitemsDecoy")) {
+                    player.sendMessage("테스트 완료");
+                }
+            }
+        }
     }
 }

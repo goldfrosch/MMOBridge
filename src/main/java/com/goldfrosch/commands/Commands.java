@@ -1,13 +1,13 @@
 package com.goldfrosch.commands;
 
-import com.goldfrosch.MMOCoreBridge;
+import com.goldfrosch.MMOBridge;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.List;
 
 public class Commands extends AbstractCommand {
-    public Commands(MMOCoreBridge plugin, String Command) {
+    public Commands(MMOBridge plugin, String Command) {
         super(plugin,Command);
     }
 

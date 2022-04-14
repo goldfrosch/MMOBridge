@@ -1,16 +1,16 @@
 package com.goldfrosch.commands;
 
-import com.goldfrosch.MMOCoreBridge;
+import com.goldfrosch.MMOBridge;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 
 import java.util.List;
 
 public abstract class AbstractCommand implements TabExecutor {
-    protected MMOCoreBridge plugin;
+    protected MMOBridge plugin;
     private String Command;
 
-    public AbstractCommand(MMOCoreBridge plugin, String Command) {
+    public AbstractCommand(MMOBridge plugin, String Command) {
         this.plugin = plugin;
         this.Command = Command;
     }

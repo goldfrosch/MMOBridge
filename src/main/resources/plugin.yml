@@ -1,5 +1,5 @@
-main: com.goldfrosch.MMOCoreBridge
-name: MMOCoreBridge
+main: com.goldfrosch.MMOBridge
+name: MMOBridge
 version: 0.0.1-SNAPSHOT
 author: GoldFrosch
 depend:

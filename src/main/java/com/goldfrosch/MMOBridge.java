@@ -12,7 +12,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 @Getter
 @Setter
-public class MMOCoreBridge extends JavaPlugin implements Listener {
+public class MMOBridge extends JavaPlugin implements Listener {
     private PluginDescriptionFile pdfFile = this.getDescription();
     private String pfName = pdfFile.getName() + " v" + pdfFile.getVersion();
 

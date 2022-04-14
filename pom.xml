@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.goldfrosch</groupId>
-    <artifactId>MMOCoreBridge</artifactId>
+    <artifactId>MMOBridge</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>
