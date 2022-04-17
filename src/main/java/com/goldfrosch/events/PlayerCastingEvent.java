@@ -23,20 +23,22 @@ public class PlayerCastingEvent implements Listener {
         ItemStack[] invList = player.getInventory().getContents();
 
         Optional.ofNullable(invList[e.getNewSlot()]).ifPresent(selectItem -> {
-            Optional.ofNullable(NBTItem.get(selectItem)).ifPresent(nbtItem -> {
+            NBTItem nbtItem = NBTItem.get(selectItem);
+            if(nbtItem.getType() != null) {
                 UseItem useItem = UseItem.getItem(player, nbtItem, nbtItem.getType());
 
                 if(useItem instanceof Consumable) {
-                    Consumable.ConsumableConsumeResult result = ((Consumable) useItem).useOnPlayer(player.getHandRaised(), false);
-                    player.sendMessage(String.valueOf(result));
-                    if (result == Consumable.ConsumableConsumeResult.CONSUME) {
-                        selectItem.setAmount(selectItem.getAmount() - 1);
+                    if (useItem.checkItemRequirements()) {
+                        Consumable.ConsumableConsumeResult result = ((Consumable) useItem).useOnPlayer(player.getHandRaised(), false);
+                        if (result == Consumable.ConsumableConsumeResult.CONSUME) {
+                            selectItem.setAmount(selectItem.getAmount() - 1);
+                        }
                     }
                 }
 
                 useItem.getPlayerData().applyItemCooldown(useItem.getMMOItem(), useItem.getNBTItem().getStat("ITEM_COOLDOWN"));
                 useItem.executeCommands();
-            });
+            }
         });
     }
 }
