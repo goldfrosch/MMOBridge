@@ -47,6 +47,6 @@ public class MMOBridge extends JavaPlugin implements Listener {
     }
 
     public void registerEvent() {
-        Bukkit.getPluginManager().registerEvents(new PlayerCastingEvent(this),this);
+        Bukkit.getPluginManager().registerEvents(new PlayerCastingEvent(),this);
     }
 }
