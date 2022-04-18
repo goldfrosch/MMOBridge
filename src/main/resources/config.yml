@@ -1,2 +1,4 @@
 message:
   prefix: "&fTEST"
+  cast:
+    cooldown: "&f HI BRO!"

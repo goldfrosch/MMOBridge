@@ -1,20 +1,27 @@
 package com.goldfrosch.events;
 
+import com.goldfrosch.MMOBridge;
+import com.goldfrosch.utils.ChatUtils;
 import io.lumine.mythic.lib.api.item.NBTItem;
 import lombok.NoArgsConstructor;
 import net.Indyuce.mmocore.api.player.PlayerData;
 import net.Indyuce.mmoitems.api.interaction.Consumable;
 import net.Indyuce.mmoitems.api.interaction.UseItem;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Objects;
 import java.util.Optional;
 
 @NoArgsConstructor
 public class PlayerCastingEvent implements Listener {
+    private ChatUtils chatUtils;
+
+    private final ConfigurationSection config = MMOBridge.plugin.getConfig();
 
     @EventHandler
     public void onPlayerChangeHotSlotIfCasting(PlayerItemHeldEvent e) {
@@ -32,8 +39,11 @@ public class PlayerCastingEvent implements Listener {
                     if(useItem instanceof Consumable) {
                         if(useItem.getPlayerData().isOnCooldown(useItem.getMMOItem())) {
                             player.sendMessage(
-                                "아이템이 쿨타임 중입니다. 남은 시간: "
-                                + useItem.getPlayerData().getItemCooldown(useItem.getMMOItem())
+                                chatUtils.replaceMessagePlaceholderToData(
+                                    Objects.requireNonNull(config.getString("message.cast.cooldown")),
+                                    "{cooldown}",
+                                    String.valueOf(useItem.getPlayerData().getItemCooldown(useItem.getMMOItem()))
+                                )
                             );
                         } else {
                             if (useItem.checkItemRequirements()) {
