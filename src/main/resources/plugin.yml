@@ -6,5 +6,5 @@ depend:
   - MMOItems
   - MMOCore
 commands:
-  cmd:
+  mmobridge:
     description: HO!

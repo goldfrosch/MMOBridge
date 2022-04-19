@@ -19,7 +19,7 @@ import java.util.Optional;
 
 @NoArgsConstructor
 public class PlayerCastingEvent implements Listener {
-    private ChatUtils chatUtils;
+    private final ChatUtils chatUtils = new ChatUtils();
 
     private final ConfigurationSection config = MMOBridge.plugin.getConfig();
 

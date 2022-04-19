@@ -33,9 +33,9 @@ public class MMOBridge extends JavaPlugin {
         registerEvent();
 
         //command
-        Commands cmd = new Commands(this,"cmd");
-        getCommand("cmd").setExecutor(cmd);
-        getCommand("cmd").setTabCompleter(cmd);
+        Commands cmd = new Commands(this,"mmobridge");
+        getCommand("mmobridge").setExecutor(cmd);
+        getCommand("mmobridge").setTabCompleter(cmd);
 
         consoleLog(pfName+"이 활성화 되었습니다");
         super.onEnable();

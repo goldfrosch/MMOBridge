@@ -1,4 +1,4 @@
 message:
-  prefix: "&fTEST"
+  prefix: "&8MMO&6Bridge &7:: "
   cast:
-    cooldown: "&f HI BRO!"
+    cooldown: "&f{cooldown}초동안 해당 아이템을 사용할 수 없습니다"
