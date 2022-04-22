@@ -6,7 +6,7 @@ import org.bukkit.configuration.ConfigurationSection;
 import java.util.Objects;
 
 public class ChatUtils {
-  private final ConfigurationSection config = MMOBridge.plugin.getConfig();
+  private static final ConfigurationSection config = MMOBridge.plugin.getConfig();
 
   public String setPrefix(String msg) {
     return Objects.requireNonNull(config.getString("message.prefix")) + msg;
