@@ -1,6 +1,7 @@
 package com.goldfrosch.commands;
 
 import com.goldfrosch.MMOBridge;
+import com.goldfrosch.gui.InventoryGUI;
 import com.goldfrosch.utils.ChatUtils;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -26,6 +27,12 @@ public class Commands extends AbstractCommand {
             if(label.equalsIgnoreCase("mmobridge")){
                 if(args.length == 0){
                     player.sendMessage(chatUtils.getMessageInMinecraftColor("어쩔 티비"));
+                }
+                else {
+                    if(args[0].equalsIgnoreCase("test")) {
+                        InventoryGUI gui = new InventoryGUI.Builder().player(player).guiLine(5).guiTitle("TEST").build();
+                        player.openInventory(gui.getInventoryGUI());
+                    }
                 }
             }
         }
