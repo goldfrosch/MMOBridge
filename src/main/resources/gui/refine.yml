@@ -1,0 +1,13 @@
+menu_title: '&7테스트 메뉴'
+height: 4
+slots:
+  'test1':
+    key: 1
+  'test2':
+    key: 1
+  'test3':
+    key: 1
+  'test4':
+    key: 1
+  'test5':
+    key: 1

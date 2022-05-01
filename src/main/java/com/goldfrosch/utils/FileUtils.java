@@ -12,15 +12,14 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 public class FileUtils {
-  private final String fileName;
   private final MMOBridge plugin;
 
-  public Optional<FileConfiguration> getGUIList() {
+  public Optional<FileConfiguration> getGUIItem(String fileName) {
     File file = new File(plugin.getDataFolder() + "/gui", fileName + ".yml");
 
     if(!file.exists()) {
-//      file.getParentFile().mkdirs();
-      plugin.saveResource(fileName + ".yml", false);
+      file.getParentFile().mkdirs();
+      plugin.saveResource("/gui" + fileName + ".yml", true);
     }
 
     FileConfiguration guiFile = new YamlConfiguration();
