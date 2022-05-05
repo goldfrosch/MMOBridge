@@ -14,6 +14,10 @@ import java.util.Optional;
 public class FileUtils {
   private final MMOBridge plugin;
 
+  public static FileUtils getInstance(MMOBridge plugin) {
+    return new FileUtils(plugin);
+  }
+
   public Optional<FileConfiguration> getGUIItem(String fileName) {
     File file = new File(plugin.getDataFolder() + "/gui", fileName + ".yml");
 

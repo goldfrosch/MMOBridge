@@ -19,8 +19,6 @@ import java.util.Optional;
 
 @NoArgsConstructor
 public class PlayerCastingEvent implements Listener {
-    private final ChatUtils chatUtils = new ChatUtils();
-
     private final ConfigurationSection config = MMOBridge.plugin.getConfig();
 
     @EventHandler
@@ -39,7 +37,7 @@ public class PlayerCastingEvent implements Listener {
                     if(useItem instanceof Consumable) {
                         if(useItem.getPlayerData().isOnCooldown(useItem.getMMOItem())) {
                             player.sendMessage(
-                                chatUtils.replaceMessagePlaceholderToData(
+                                ChatUtils.replaceMessagePlaceholderToData(
                                     Objects.requireNonNull(config.getString("message.cast.cooldown")),
                                     "{cooldown}",
                                     String.valueOf(useItem.getPlayerData().getItemCooldown(useItem.getMMOItem()))

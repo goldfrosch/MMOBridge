@@ -11,8 +11,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class Commands extends AbstractCommand {
-    private final ChatUtils chatUtils = new ChatUtils();
-
     public Commands(MMOBridge plugin, String Command) {
         super(plugin,Command);
     }
@@ -28,7 +26,7 @@ public class Commands extends AbstractCommand {
             Player player = (Player) sender;
             if(label.equalsIgnoreCase("mmobridge")){
                 if(args.length == 0){
-                    player.sendMessage(chatUtils.getMessageInMinecraftColor("어쩔 티비"));
+                    player.sendMessage(ChatUtils.getMessageInMinecraftColor("어쩔 티비"));
                 }
                 else {
                     switch (args[0]) {
@@ -37,7 +35,7 @@ public class Commands extends AbstractCommand {
                             player.openInventory(gui.getInventoryGUI());
                             break;
                         case "tests":
-                            new FileUtils(plugin).getGUIItem("refine").ifPresent((item) -> {
+                            FileUtils.getInstance(plugin).getGUIItem("refine").ifPresent((item) -> {
                                 plugin.consoleLog(item.getString("menu_title"));
                                 for (Object key: Objects.requireNonNull(item.getList("slots"))) {
                                     plugin.consoleLog(key.toString());

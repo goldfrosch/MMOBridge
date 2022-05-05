@@ -8,15 +8,15 @@ import java.util.Objects;
 public class ChatUtils {
   private static final ConfigurationSection config = MMOBridge.plugin.getConfig();
 
-  public String setPrefix(String msg) {
+  public static String setPrefix(String msg) {
     return Objects.requireNonNull(config.getString("message.prefix")) + msg;
   }
 
-  public String getMessageInMinecraftColor(String msg) {
+  public static String getMessageInMinecraftColor(String msg) {
     return setPrefix(msg.replace("&", "§"));
   }
 
-  public String replaceMessagePlaceholderToData(String msg, String placeholder, String data) {
+  public static String replaceMessagePlaceholderToData(String msg, String placeholder, String data) {
     return getMessageInMinecraftColor(msg.replace(placeholder, data));
   }
 }
